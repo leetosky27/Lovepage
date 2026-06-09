@@ -4,232 +4,308 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para ti 💖</title>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap"
-        rel="stylesheet">
+    <title>Love Heart For Her</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg1: #ff9a9e;
-            --bg2: #fad0c4;
-            --card: #ffffffaa;
-            --accent: #ff6b81
+            --bg: #14060f;
+            --text: #f7e8ff;
+            --subtext: #f4d6ff;
+            --accent: #ff5f9b;
+            --accent2: #ffb3d3;
         }
 
         * {
-            box-sizing: border-box
+            box-sizing: border-box;
         }
 
-        html,
         body {
-            height: 100%;
             margin: 0;
-            font-family: Poppins, system-ui, Arial;
-            background: linear-gradient(135deg, var(--bg1), var(--bg2));
-            -webkit-font-smoothing: antialiased
+            min-height: 100vh;
+            font-family: 'Poppins', system-ui, sans-serif;
+            color: var(--text);
+            background: radial-gradient(circle at top, rgba(255, 108, 171, 0.16), transparent 28%),
+                radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.08), transparent 18%),
+                linear-gradient(180deg, #12020b 0%, #0b060f 100%);
+            overflow: hidden;
         }
 
-        .stage {
+        .page {
+            position: relative;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 2rem
+            padding: 2rem;
         }
 
-        .card {
-            width: 100%;
-            max-width: 820px;
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(6px);
-            border-radius: 20px;
-            padding: 2.2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.18);
+        .hero {
             position: relative;
-            overflow: hidden
-        }
-
-        h1 {
-            font-family: 'Great Vibes', cursive;
-            font-size: 3.2rem;
-            margin: 0 0 0.2rem;
-            color: #fff;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2)
-        }
-
-        p.lead {
-            color: rgba(255, 255, 255, 0.95);
-            font-size: 1.05rem;
-            margin: 0 0 1rem
-        }
-
-        .message {
-            background: linear-gradient(90deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
-            padding: 1rem;
-            border-radius: 12px;
-            color: #fff
-        }
-
-        .btns {
-            margin-top: 1rem;
-            display: flex;
-            gap: 0.6rem
-        }
-
-        button {
-            background: var(--accent);
-            color: #fff;
-            border: none;
-            padding: 0.7rem 1rem;
-            border-radius: 10px;
-            font-weight: 600;
-            cursor: pointer;
-            box-shadow: 0 6px 18px rgba(255, 107, 129, 0.18);
-            transition: transform .15s ease, box-shadow .15s ease
-        }
-
-        button.secondary {
-            background: rgba(255, 255, 255, 0.14);
-            color: #fff
-        }
-
-        button:active {
-            transform: translateY(2px)
-        }
-
-        .surprise {
-            margin-top: 1rem;
-            max-height: 0;
+            width: min(1100px, 100%);
+            max-width: 1100px;
             overflow: hidden;
-            transition: max-height .45s ease;
-            padding: 0 0
         }
 
-        .surprise.open {
-            max-height: 400px;
-            padding: 1rem 0
+        .hero-text {
+            position: absolute;
+            z-index: 3;
+            width: 100%;
+            text-align: center;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            pointer-events: none;
         }
 
-        .poem {
-            color: #fff;
+        .hero-text h1 {
+            margin: 0;
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(3rem, 5vw, 5rem);
+            letter-spacing: 0.05em;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        .hero-text p {
+            margin: 0.7rem auto 0;
+            color: var(--subtext);
             font-size: 1rem;
-            line-height: 1.5
+            text-transform: uppercase;
+            letter-spacing: 0.35em;
+            opacity: 0.8;
         }
 
-        .hearts {
-            position: absolute;
-            inset: 0;
-            pointer-events: none
+        .canvas-wrap {
+            position: relative;
+            width: 100%;
+            min-height: 640px;
+            border-radius: 32px;
+            overflow: hidden;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.06), transparent 32%),
+                linear-gradient(180deg, rgba(20, 5, 29, 0.78), rgba(8, 3, 18, 0.94));
+            box-shadow: inset 0 0 120px rgba(255, 95, 155, 0.08), 0 40px 120px rgba(0, 0, 0, 0.35);
         }
 
-        .heart {
-            position: absolute;
-            width: 28px;
-            height: 28px;
-            transform: translate(-50%, -50%) scale(0.9);
-            animation: floatUp linear infinite;
-            opacity: 0.95
-        }
-
-        .heart svg {
+        canvas {
+            display: block;
             width: 100%;
             height: 100%;
-            filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.12))
         }
 
-        @keyframes floatUp {
-            0% {
-                transform: translateY(0) scale(0.9) rotate(0)
-            }
-
-            50% {
-                transform: translateY(-18px) scale(1.05) rotate(8deg)
-            }
-
-            100% {
-                transform: translateY(-220px) scale(0.9) rotate(-6deg);
-                opacity: 0
-            }
+        .center-heart {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 143, 191, 0.92), rgba(255, 95, 155, 0.72));
+            border: 2px solid rgba(255, 255, 255, 0.14);
+            box-shadow: 0 0 0 0 rgba(255, 95, 155, 0.3);
+            animation: pulse 2.5s ease-in-out infinite;
+            cursor: pointer;
         }
 
-        .footer {
-            margin-top: 1.2rem;
+        .center-heart:hover {
+            transform: translate(-50%, -50%) scale(1.03);
+        }
+
+        .center-heart::before {
+            content: '';
+            position: absolute;
+            inset: -20px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 95, 155, 0.24), transparent 55%);
+            filter: blur(8px);
+        }
+
+        .center-heart svg {
+            width: 60px;
+            height: 60px;
+            filter: drop-shadow(0 12px 24px rgba(255, 95, 155, 0.35));
+        }
+
+        .center-heart span {
+            position: absolute;
+            bottom: 18px;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.92);
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .info-box {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
             color: rgba(255, 255, 255, 0.85);
-            font-size: 0.9rem
+            padding: 1rem 1.6rem;
+            border-radius: 22px;
+            max-width: min(780px, 90%);
+            text-align: center;
+            font-size: 0.95rem;
         }
 
-        @media(max-width:520px) {
-            h1 {
-                font-size: 2.4rem
-            }
+        .info-box strong {
+            color: var(--accent);
+        }
 
-            .card {
-                padding: 1.4rem
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(255, 95, 155, 0.22);
+            }
+            50% {
+                box-shadow: 0 0 0 24px rgba(255, 95, 155, 0.08);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .canvas-wrap {
+                min-height: 520px;
+            }
+            .center-heart {
+                width: 140px;
+                height: 140px;
             }
         }
     </style>
 </head>
 
 <body>
-    <main class="stage">
-        <section class="card" aria-labelledby="title">
-            <div class="hearts" id="hearts"></div>
-            <h1 id="title">Para mi amor</h1>
-            <p class="lead">Sé que hoy no es tu mejor día — quiero regalarte una sonrisa.</p>
-            <div class="message">
-                <p class="poem">Eres la razón de mis sonrisas, la luz suave en mis días. Aquí tienes un abrazo virtual y
-                    mil razones para seguir brillando. ❤️</p>
-                <div class="btns">
-                    <button id="surpriseBtn">Abrir sorpresa</button>
-                    <button id="hugBtn" class="secondary">Enviar abrazo</button>
-                </div>
-                <div class="surprise" id="surprise">
-                    <p class="poem" style="margin-top:.6rem">Pequeño verso para ti:<br>Cuando el cielo esté gris, mira
-                        aquí dentro, <br>mi corazón late fuerte, sólo por tu aliento.</p>
-                </div>
+    <div class="page">
+        <section class="hero">
+            <div class="hero-text">
+                <p>this is for you</p>
+                <h1>Love Heart For Her</h1>
             </div>
-            <div class="footer">¿Quieres que personalice el mensaje con su nombre o cambie los colores? Dímelo y lo
-                ajusto.</div>
+            <div class="canvas-wrap">
+                <canvas id="heartCanvas"></canvas>
+                <button class="center-heart" id="playHeart" aria-label="Tocar canción">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 21s-7.5-4.9-9.6-7.1C-0.1 10.1 2.4 4 7.6 4c2.2 0 3.9 1.2 4.4 2.2.5-1 2.2-2.2 4.4-2.2 5.3 0 7.6 6.1 5.2 9.9C19.5 16.1 12 21 12 21z" />
+                    </svg>
+                    <span>play</span>
+                </button>
+                <div class="info-box">Haz clic en el corazón para activar la música cuando quieras. Pronto puedo poner tu canción favorita aquí.</div>
+            </div>
         </section>
-    </main>
+    </div>
 
     <script>
-        // Crear corazones flotantes
-        const heartsContainer = document.getElementById('hearts');
-        function makeHeart() {
-            const n = document.createElement('div');
-            n.className = 'heart';
-            const size = 14 + Math.random() * 30;
-            n.style.width = size + 'px';
-            n.style.height = size + 'px';
-            n.style.left = (5 + Math.random() * 90) + '%';
-            n.style.bottom = '-40px';
-            n.style.animationDuration = (5 + Math.random() * 6) + 's';
-            n.style.opacity = 0.9 - Math.random() * 0.4;
-            const color = ['#ff6b81', '#ff9aa2', '#ffd1dc', '#ffb3c6'][Math.floor(Math.random() * 4)];
-            n.innerHTML = `<svg viewBox="0 0 32 29" xmlns="http://www.w3.org/2000/svg"><path fill="${color}" d="M23.6 0c-2.8 0-5.1 1.8-6 3.9C16.5 1.8 14.2 0 11.4 0 5.1 0 .6 4.8.6 10.7c0 6.1 6.2 10.4 15.4 18.3l1.6 1.3 1.6-1.3C25.2 21.1 31.4 16.8 31.4 10.7 31.4 4.8 26.9 0 20.6 0z"/></svg>`;
-            heartsContainer.appendChild(n);
-            // eliminar después
-            setTimeout(() => n.remove(), 12000 + Math.random() * 8000);
+        const canvas = document.getElementById('heartCanvas');
+        const ctx = canvas.getContext('2d');
+        const particles = [];
+        const center = { x: 0, y: 0 };
+        let width = 0;
+        let height = 0;
+
+        function resizeCanvas() {
+            width = canvas.width = canvas.offsetWidth * window.devicePixelRatio;
+            height = canvas.height = canvas.offsetHeight * window.devicePixelRatio;
+            ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
+            center.x = canvas.offsetWidth / 2;
+            center.y = canvas.offsetHeight / 2 + 10;
+            createHeartPoints();
         }
-        // Mantener algunos corazones constantes
-        for (let i = 0; i < 8; i++) setTimeout(makeHeart, i * 400);
-        setInterval(() => { makeHeart(); }, 900);
 
-        // Botones
-        const surpriseBtn = document.getElementById('surpriseBtn');
-        const surprise = document.getElementById('surprise');
-        surpriseBtn.addEventListener('click', () => {
-            surprise.classList.toggle('open');
-            surpriseBtn.textContent = surprise.classList.contains('open') ? 'Cerrar' : 'Abrir sorpresa';
-            // burst de corazones
-            for (let i = 0; i < 18; i++) setTimeout(makeHeart, i * 40);
-        });
+        window.addEventListener('resize', resizeCanvas);
 
-        const hugBtn = document.getElementById('hugBtn');
-        hugBtn.addEventListener('click', () => {
-            // ráfaga rápida
-            for (let i = 0; i < 36; i++) setTimeout(makeHeart, i * 20);
+        function heartPoint(t, scale = 14) {
+            const x = 16 * Math.pow(Math.sin(t), 3);
+            const y = 13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t);
+            return { x: center.x + x * scale, y: center.y - y * scale };
+        }
+
+        function createHeartPoints() {
+            particles.length = 0;
+            const count = 120;
+            for (let i = 0; i < count; i++) {
+                const t = (Math.PI * 2 * i) / count;
+                const base = heartPoint(t, canvas.offsetWidth / 28);
+                particles.push({
+                    x: base.x,
+                    y: base.y,
+                    ox: base.x,
+                    oy: base.y,
+                    speed: 0.04 + Math.random() * 0.06,
+                    angle: Math.random() * Math.PI * 2,
+                    radius: 2 + Math.random() * 2,
+                    hue: 330 + Math.random() * 50,
+                    alpha: 0.55 + Math.random() * 0.35,
+                });
+            }
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.offsetWidth, canvas.offsetHeight);
+            ctx.fillStyle = 'rgba(10, 3, 18, 0.14)';
+            ctx.fillRect(0, 0, canvas.offsetWidth, canvas.offsetHeight);
+
+            particles.forEach((p, i) => {
+                const pulse = Math.sin((Date.now() * 0.0015 + i) * p.speed) * 5;
+                const ox = p.ox + Math.cos(p.angle) * pulse;
+                const oy = p.oy + Math.sin(p.angle) * pulse;
+                ctx.beginPath();
+                ctx.fillStyle = `hsla(${p.hue}, 100%, 74%, ${p.alpha})`;
+                ctx.arc(ox, oy, p.radius * (0.75 + Math.sin(Date.now() * 0.003 + i) * 0.15), 0, Math.PI * 2);
+                ctx.fill();
+
+                if (i % 8 === 0) {
+                    ctx.beginPath();
+                    ctx.strokeStyle = `hsla(${p.hue}, 100%, 88%, ${p.alpha * 0.32})`;
+                    ctx.lineWidth = 1;
+                    ctx.arc(ox, oy, p.radius * 4, 0, Math.PI * 2);
+                    ctx.stroke();
+                }
+            });
+
+            drawGlow();
+            requestAnimationFrame(draw);
+        }
+
+        function drawGlow() {
+            for (let i = 0; i < 18; i++) {
+                const x = center.x + (Math.random() - 0.5) * canvas.offsetWidth * 0.75;
+                const y = center.y + (Math.random() - 0.5) * canvas.offsetHeight * 0.6;
+                const size = Math.random() * 1.8 + 0.5;
+                ctx.fillStyle = `rgba(255,255,255,${Math.random() * 0.25})`;
+                ctx.fillRect(x, y, size, size);
+            }
+        }
+
+        resizeCanvas();
+        draw();
+
+        const playHeart = document.getElementById('playHeart');
+        const song = new Audio();
+        song.loop = true;
+        // song.src = 'song.mp3'; // Coloca tu canción aquí
+
+        playHeart.addEventListener('click', () => {
+            if (!song.src) {
+                playHeart.querySelector('span').textContent = 'cargar';
+                playHeart.classList.add('playing');
+                setTimeout(() => {
+                    playHeart.querySelector('span').textContent = 'play';
+                    playHeart.classList.remove('playing');
+                }, 900);
+                return;
+            }
+            if (song.paused) {
+                song.play();
+                playHeart.querySelector('span').textContent = 'pause';
+                playHeart.classList.add('playing');
+            } else {
+                song.pause();
+                playHeart.querySelector('span').textContent = 'play';
+                playHeart.classList.remove('playing');
+            }
         });
     </script>
 </body>
