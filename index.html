@@ -23,9 +23,23 @@
             margin: 0;
             min-height: 100vh;
             font-family: 'Poppins', system-ui, sans-serif;
-            background: linear-gradient(135deg, var(--bg1), var(--bg2));
+            background: radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.55), transparent 12%),
+                radial-gradient(circle at 80% 15%, rgba(255, 255, 255, 0.35), transparent 10%),
+                linear-gradient(135deg, var(--bg1), var(--bg2));
             color: #2b1332;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.9), transparent 1px) 0 0/14px 14px,
+                radial-gradient(circle, rgba(255, 255, 255, 0.7), transparent 1px) 6px 6px/30px 30px;
+            opacity: 0.16;
+            pointer-events: none;
+            z-index: 0;
         }
 
         .stage {
@@ -34,7 +48,9 @@
             align-items: center;
             justify-content: center;
             padding: 2rem;
-        }
+            position: relative;
+            z-index: 1;
+        
 
         .card {
             position: relative;
@@ -239,12 +255,6 @@
             pointer-events: none;
         }
 
-        .modal-stars {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-        }
-
         .modal-center {
             position: absolute;
             inset: 0;
@@ -377,7 +387,7 @@
                     <p>Pequeño verso para ti:<br>Cuando el cielo esté gris, mira aquí dentro,<br>mi corazón late fuerte, sólo por tu aliento.</p>
                 </div>
             </div>
-            <div class="footer">Si quieres, puedo poner tu nombre y hacerlo aún más especial.</div>
+            <div class="footer">No te rindas, no te desanimes y recuerda que si no lo hice por muchos años, ahora sí que menos te voy a dejar sola. Siempre estaré contigo. Besos.</div>
         </section>
     </main>
 
@@ -386,21 +396,17 @@
             <button class="modal-close" id="closeModal">✕</button>
             <div class="modal-background"></div>
             <div class="modal-shine"></div>
-            <div class="modal-stars" id="modalStars"></div>
             <div class="modal-center">
-                <div class="modal-heart" id="heartButton">
+                <div class="modal-heart">
                     <div class="modal-heart-inner"></div>
                     <div class="modal-heart-icon">❤</div>
                 </div>
                 <div class="modal-label">this is for you</div>
-                <div class="modal-instructions">Toca el corazón para escuchar la canción y ver la sorpresa.
-                    Mucha animación, giro y movimiento para que se sorprenda.</div>
-                <div class="audio-note">Música: Tiroteo</div>
+                <div class="modal-instructions">Cada vez que escucho esa canción pienso en ti. Eres mi cielo.
+                    No te rindas, no te desanimes, y recuerda que si no lo hice por muchos años ahora sí que menos te voy a dejar sola. Siempre estaré contigo. Besos.</div>
             </div>
         </div>
     </div>
-
-    <audio id="song" src="tiroteo.mp3" preload="auto"></audio>
 
     <script>
         const heartsContainer = document.getElementById('hearts');
@@ -409,9 +415,6 @@
         const surpriseText = document.getElementById('surpriseText');
         const modal = document.getElementById('modal');
         const closeModal = document.getElementById('closeModal');
-        const heartButton = document.getElementById('heartButton');
-        const song = document.getElementById('song');
-        const modalStars = document.getElementById('modalStars');
 
         function makeHeart() {
             const elem = document.createElement('div');
@@ -428,49 +431,20 @@
             setTimeout(() => elem.remove(), 12000 + Math.random() * 2000);
         }
 
-        function makeStar() {
-            const star = document.createElement('div');
-            star.style.position = 'absolute';
-            star.style.width = `${2 + Math.random() * 3}px`;
-            star.style.height = star.style.width;
-            star.style.borderRadius = '50%';
-            star.style.background = 'rgba(255,255,255,0.9)';
-            star.style.left = `${Math.random() * 95}%`;
-            star.style.top = `${Math.random() * 95}%`;
-            star.style.opacity = Math.random();
-            star.style.filter = 'blur(0.5px)';
-            modalStars.appendChild(star);
-            setTimeout(() => star.remove(), 8000 + Math.random() * 3000);
-        }
-
         for (let i = 0; i < 9; i++) setTimeout(makeHeart, i * 350);
         setInterval(makeHeart, 950);
 
         surpriseBtn.addEventListener('click', () => {
             modal.classList.add('open');
             surpriseText.classList.toggle('open');
-            for (let i = 0; i < 24; i++) setTimeout(makeStar, i * 180);
         });
 
         closeModal.addEventListener('click', () => {
             modal.classList.remove('open');
-            song.pause();
-            song.currentTime = 0;
-            heartButton.style.transform = 'scale(1) rotate(0deg)';
         });
 
         hugBtn.addEventListener('click', () => {
             for (let i = 0; i < 28; i++) setTimeout(makeHeart, i * 30);
-        });
-
-        heartButton.addEventListener('click', () => {
-            if (song.paused) {
-                song.play().catch(() => {});
-                heartButton.style.transform = 'scale(1.05) rotate(20deg)';
-            } else {
-                song.pause();
-                heartButton.style.transform = 'scale(1) rotate(0deg)';
-            }
         });
     </script>
 </body>
