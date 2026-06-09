@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Love Heart For Her</title>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --bg: #14060f;
@@ -157,9 +158,12 @@
         }
 
         @keyframes pulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 box-shadow: 0 0 0 0 rgba(255, 95, 155, 0.22);
             }
+
             50% {
                 box-shadow: 0 0 0 24px rgba(255, 95, 155, 0.08);
             }
@@ -169,6 +173,7 @@
             .canvas-wrap {
                 min-height: 520px;
             }
+
             .center-heart {
                 width: 140px;
                 height: 140px;
@@ -187,12 +192,15 @@
             <div class="canvas-wrap">
                 <canvas id="heartCanvas"></canvas>
                 <button class="center-heart" id="playHeart" aria-label="Tocar canción">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 21s-7.5-4.9-9.6-7.1C-0.1 10.1 2.4 4 7.6 4c2.2 0 3.9 1.2 4.4 2.2.5-1 2.2-2.2 4.4-2.2 5.3 0 7.6 6.1 5.2 9.9C19.5 16.1 12 21 12 21z" />
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path
+                            d="M12 21s-7.5-4.9-9.6-7.1C-0.1 10.1 2.4 4 7.6 4c2.2 0 3.9 1.2 4.4 2.2.5-1 2.2-2.2 4.4-2.2 5.3 0 7.6 6.1 5.2 9.9C19.5 16.1 12 21 12 21z" />
                     </svg>
                     <span>play</span>
                 </button>
-                <div class="info-box">Haz clic en el corazón para activar la música cuando quieras. Pronto puedo poner tu canción favorita aquí.</div>
+                <div class="info-box">Haz clic en el corazón para activar la música cuando quieras. Pronto puedo poner
+                    tu canción favorita aquí.</div>
             </div>
         </section>
     </div>
