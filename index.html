@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para ti 💖</title>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --bg1: #ff9a9e;
@@ -50,321 +51,371 @@
             padding: 2rem;
             position: relative;
             z-index: 1;
-        
 
-        .card {
-            position: relative;
-            width: 100%;
-            max-width: 860px;
-            padding: 2.2rem;
-            border-radius: 28px;
-            background: var(--card);
-            border: 1px solid rgba(255, 255, 255, 0.32);
-            backdrop-filter: blur(20px);
-            box-shadow: 0 32px 80px rgba(0, 0, 0, 0.12);
-            overflow: hidden;
-        }
 
-        .card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.26), transparent 24%),
-                radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.12), transparent 20%);
-            pointer-events: none;
-        }
+            .card {
+                position: relative;
+                width: 100%;
+                max-width: 860px;
+                padding: 2.2rem;
+                border-radius: 28px;
+                background: var(--card);
+                border: 1px solid rgba(255, 255, 255, 0.32);
+                backdrop-filter: blur(20px);
+                box-shadow: 0 32px 80px rgba(0, 0, 0, 0.12);
+                overflow: hidden;
+            }
 
-        .hero-title {
-            margin: 0;
-            font-size: clamp(3rem, 5vw, 4.8rem);
-            font-family: 'Great Vibes', cursive;
-            color: #fff;
-            text-shadow: 0 14px 30px rgba(129, 43, 95, 0.28);
-            position: relative;
-            z-index: 1;
-        }
+            .card::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.26), transparent 24%),
+                    radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.12), transparent 20%);
+                pointer-events: none;
+            }
 
-        .subtitle {
-            margin: 0.4rem 0 0;
-            color: rgba(255, 255, 255, 0.92);
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.35em;
-        }
+            .hero-title {
+                margin: 0;
+                font-size: clamp(3rem, 5vw, 4.8rem);
+                font-family: 'Great Vibes', cursive;
+                color: #fff;
+                text-shadow: 0 14px 30px rgba(129, 43, 95, 0.28);
+                position: relative;
+                z-index: 1;
+            }
 
-        .content {
-            position: relative;
-            z-index: 1;
-            margin-top: 1.8rem;
-        }
+            .subtitle {
+                margin: 0.4rem 0 0;
+                color: rgba(255, 255, 255, 0.92);
+                font-size: 1rem;
+                text-transform: uppercase;
+                letter-spacing: 0.35em;
+            }
 
-        .message {
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.28);
-            border-radius: 18px;
-            padding: 1.4rem;
-            color: #fff;
-            line-height: 1.7;
-            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
-        }
+            .content {
+                position: relative;
+                z-index: 1;
+                margin-top: 1.8rem;
+            }
 
-        .buttons {
-            margin-top: 1.6rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.9rem;
-        }
+            .message {
+                background: rgba(255, 255, 255, 0.2);
+                border: 1px solid rgba(255, 255, 255, 0.28);
+                border-radius: 18px;
+                padding: 1.4rem;
+                color: #fff;
+                line-height: 1.7;
+                box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+            }
 
-        .button {
-            padding: 0.95rem 1.5rem;
-            border-radius: 14px;
-            border: none;
-            cursor: pointer;
-            font-weight: 700;
-            letter-spacing: 0.03em;
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
-        }
+            .buttons {
+                margin-top: 1.6rem;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.9rem;
+            }
 
-        .button.primary {
-            background: linear-gradient(135deg, #ff7b9c, #ff5474);
-            color: #fff;
-            box-shadow: 0 14px 28px rgba(255, 78, 139, 0.28);
-        }
+            .button {
+                padding: 0.95rem 1.5rem;
+                border-radius: 14px;
+                border: none;
+                cursor: pointer;
+                font-weight: 700;
+                letter-spacing: 0.03em;
+                transition: transform 0.15s ease, box-shadow 0.15s ease;
+            }
 
-        .button.secondary {
-            background: rgba(255, 255, 255, 0.18);
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.28);
-        }
+            .button.primary {
+                background: linear-gradient(135deg, #ff7b9c, #ff5474);
+                color: #fff;
+                box-shadow: 0 14px 28px rgba(255, 78, 139, 0.28);
+            }
 
-        .button:hover {
-            transform: translateY(-2px);
-        }
+            .button.secondary {
+                background: rgba(255, 255, 255, 0.18);
+                color: #fff;
+                border: 1px solid rgba(255, 255, 255, 0.28);
+            }
 
-        .surprise-text {
-            margin-top: 1.2rem;
-            visibility: hidden;
-            opacity: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.45s ease;
-        }
+            .button:hover {
+                transform: translateY(-2px);
+            }
 
-        .surprise-text.open {
-            visibility: visible;
-            opacity: 1;
-            max-height: 400px;
-        }
+            .surprise-text {
+                margin-top: 1.2rem;
+                visibility: hidden;
+                opacity: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: all 0.45s ease;
+            }
 
-        .surprise-text p {
-            margin: 0;
-        }
+            .surprise-text.open {
+                visibility: visible;
+                opacity: 1;
+                max-height: 400px;
+            }
 
-        .footer {
-            margin-top: 1.6rem;
-            color: rgba(255, 255, 255, 0.88);
-            font-size: 0.95rem;
-        }
+            .surprise-text p {
+                margin: 0;
+            }
 
-        .hearts {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            overflow: hidden;
-        }
+            .footer {
+                margin-top: 1.6rem;
+                color: rgba(255, 255, 255, 0.88);
+                font-size: 0.95rem;
+            }
 
-        .heart {
-            position: absolute;
-            width: 28px;
-            height: 28px;
-            transform: translate(-50%, -50%) rotate(0deg);
-            animation: floatUp 9s linear infinite;
-            opacity: 0.92;
-        }
+            .hearts {
+                position: absolute;
+                inset: 0;
+                pointer-events: none;
+                overflow: hidden;
+            }
 
-        .heart svg {
-            width: 100%;
-            height: 100%;
-        }
+            .heart {
+                position: absolute;
+                width: 28px;
+                height: 28px;
+                transform: translate(-50%, -50%) rotate(0deg);
+                animation: floatUp 9s linear infinite;
+                opacity: 0.92;
+            }
 
-        @keyframes floatUp {
-            0% { transform: translate(-50%, 110%) scale(0.75) rotate(0deg); opacity: 0.6; }
-            50% { opacity: 1; }
-            100% { transform: translate(-50%, -120vh) scale(0.85) rotate(360deg); opacity: 0; }
-        }
+            .heart svg {
+                width: 100%;
+                height: 100%;
+            }
 
-        .modal {
-            position: fixed;
-            inset: 0;
-            z-index: 60;
-            display: grid;
-            place-items: center;
-            background: rgba(8, 3, 10, 0.95);
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.35s ease;
-        }
+            @keyframes floatUp {
+                0% {
+                    transform: translate(-50%, 110%) scale(0.75) rotate(0deg);
+                    opacity: 0.6;
+                }
 
-        .modal.open {
-            opacity: 1;
-            pointer-events: auto;
-        }
+                50% {
+                    opacity: 1;
+                }
 
-        .modal-content {
-            position: relative;
-            width: min(980px, 93%);
-            max-width: 980px;
-            min-height: 560px;
-            border-radius: 32px;
-            overflow: hidden;
-            background: radial-gradient(circle at 35% 30%, rgba(255, 119, 156, 0.16), transparent 34%),
-                linear-gradient(180deg, rgba(32, 8, 25, 0.98), rgba(12, 3, 16, 0.98));
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 40px 120px rgba(0, 0, 0, 0.45);
-        }
+                100% {
+                    transform: translate(-50%, -120vh) scale(0.85) rotate(360deg);
+                    opacity: 0;
+                }
+            }
 
-        .modal-close {
-            position: absolute;
-            right: 18px;
-            top: 18px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            color: #fff;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.2rem;
-            display: grid;
-            place-items: center;
-        }
+            .modal {
+                position: fixed;
+                inset: 0;
+                z-index: 60;
+                display: grid;
+                place-items: center;
+                background: rgba(8, 3, 10, 0.95);
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.35s ease;
+            }
 
-        .modal-background {
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at center, rgba(255, 103, 159, 0.18), transparent 30%),
-                radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.08), transparent 18%),
-                linear-gradient(180deg, rgba(16, 4, 18, 0.98), rgba(4, 1, 7, 0.98));
-        }
+            .modal.open {
+                opacity: 1;
+                pointer-events: auto;
+            }
 
-        .modal-shine {
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.1), transparent 20%),
-                radial-gradient(circle at 80% 60%, rgba(255, 145, 187, 0.14), transparent 18%);
-            pointer-events: none;
-        }
+            .modal-content {
+                position: relative;
+                width: min(980px, 93%);
+                max-width: 980px;
+                min-height: 560px;
+                border-radius: 32px;
+                overflow: hidden;
+                background: radial-gradient(circle at 35% 30%, rgba(255, 119, 156, 0.16), transparent 34%),
+                    linear-gradient(180deg, rgba(32, 8, 25, 0.98), rgba(12, 3, 16, 0.98));
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                box-shadow: 0 40px 120px rgba(0, 0, 0, 0.45);
+            }
 
-        .modal-center {
-            position: absolute;
-            inset: 0;
-            display: grid;
-            place-items: center;
-            pointer-events: none;
-        }
+            .modal-close {
+                position: absolute;
+                right: 18px;
+                top: 18px;
+                background: rgba(255, 255, 255, 0.1);
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                color: #fff;
+                width: 44px;
+                height: 44px;
+                border-radius: 50%;
+                cursor: pointer;
+                font-size: 1.2rem;
+                display: grid;
+                place-items: center;
+            }
 
-        .modal-heart {
-            position: relative;
-            width: 220px;
-            height: 220px;
-            display: grid;
-            place-items: center;
-            pointer-events: auto;
-            animation: heartSwing 6s ease-in-out infinite;
-        }
+            .modal-background {
+                position: absolute;
+                inset: 0;
+                background: radial-gradient(circle at center, rgba(255, 103, 159, 0.18), transparent 30%),
+                    radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.08), transparent 18%),
+                    linear-gradient(180deg, rgba(16, 4, 18, 0.98), rgba(4, 1, 7, 0.98));
+            }
 
-        .modal-heart-inner {
-            position: relative;
-            width: 90%;
-            height: 90%;
-            background: radial-gradient(circle at 40% 30%, rgba(255, 130, 175, 1), rgba(255, 65, 105, 1));
-            border-radius: 50%;
-            filter: drop-shadow(0 24px 60px rgba(255, 84, 131, 0.35));
-        }
+            .modal-shine {
+                position: absolute;
+                inset: 0;
+                background: radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.1), transparent 20%),
+                    radial-gradient(circle at 80% 60%, rgba(255, 145, 187, 0.14), transparent 18%);
+                pointer-events: none;
+            }
 
-        .modal-heart-inner::before,
-        .modal-heart-inner::after {
-            content: '';
-            position: absolute;
-            width: 56%;
-            height: 56%;
-            background: inherit;
-            border-radius: 50%;
-            top: -18%;
-            left: 12%;
-        }
+            .modal-center {
+                position: absolute;
+                inset: 0;
+                display: grid;
+                place-items: center;
+                pointer-events: none;
+            }
 
-        .modal-heart-inner::after {
-            left: auto;
-            right: 12%;
-        }
+            .modal-heart {
+                position: relative;
+                width: 220px;
+                height: 220px;
+                display: grid;
+                place-items: center;
+                pointer-events: auto;
+                animation: heartSwing 6s ease-in-out infinite;
+            }
 
-        .modal-heart-icon {
-            position: absolute;
-            inset: 0;
-            display: grid;
-            place-items: center;
-            font-size: 4rem;
-            color: rgba(255, 255, 255, 0.88);
-            pointer-events: none;
-            text-shadow: 0 12px 40px rgba(255, 96, 148, 0.46);
-        }
+            .modal-heart-inner {
+                position: relative;
+                width: 90%;
+                height: 90%;
+                background: radial-gradient(circle at 40% 30%, rgba(255, 130, 175, 1), rgba(255, 65, 105, 1));
+                border-radius: 50%;
+                filter: drop-shadow(0 24px 60px rgba(255, 84, 131, 0.35));
+            }
 
-        .modal-label {
-            position: absolute;
-            top: 14%;
-            width: 100%;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1rem;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-        }
+            .modal-heart-inner::before,
+            .modal-heart-inner::after {
+                content: '';
+                position: absolute;
+                width: 56%;
+                height: 56%;
+                background: inherit;
+                border-radius: 50%;
+                top: -18%;
+                left: 12%;
+            }
 
-        .modal-instructions {
-            position: absolute;
-            bottom: 17%;
-            width: 100%;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.82);
-            max-width: 80%;
-            margin: 0 auto;
-            font-size: 1rem;
-            line-height: 1.7;
-        }
+            .modal-heart-inner::after {
+                left: auto;
+                right: 12%;
+            }
 
-        .audio-note {
-            position: absolute;
-            bottom: 5%;
-            width: 100%;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.75);
-            font-size: 0.88rem;
-        }
+            .modal-heart-icon {
+                position: absolute;
+                inset: 0;
+                display: grid;
+                place-items: center;
+                font-size: 4rem;
+                color: rgba(255, 255, 255, 0.88);
+                pointer-events: none;
+                text-shadow: 0 12px 40px rgba(255, 96, 148, 0.46);
+            }
 
-        @keyframes heartSwing {
-            0%, 100% { transform: rotate(0deg) translateY(0); }
-            25% { transform: rotate(10deg) translateY(-6px); }
-            50% { transform: rotate(0deg) translateY(0); }
-            75% { transform: rotate(-10deg) translateY(-6px); }
-        }
+            .modal-label {
+                position: absolute;
+                top: 14%;
+                width: 100%;
+                text-align: center;
+                color: rgba(255, 255, 255, 0.9);
+                font-size: 1rem;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+            }
 
-        @keyframes floatLeft {
-            from { transform: translateX(-8vw) translateY(18vh) scale(0.7); opacity: 0; }
-            to { transform: translateX(8vw) translateY(-60vh) scale(1); opacity: 0; }
-        }
+            .modal-instructions {
+                position: absolute;
+                bottom: 17%;
+                width: 100%;
+                text-align: center;
+                color: rgba(255, 255, 255, 0.82);
+                max-width: 80%;
+                margin: 0 auto;
+                font-size: 1rem;
+                line-height: 1.7;
+            }
 
-        @keyframes floatRight {
-            from { transform: translateX(8vw) translateY(18vh) scale(0.7); opacity: 0; }
-            to { transform: translateX(-8vw) translateY(-58vh) scale(1); opacity: 0; }
-        }
+            .audio-note {
+                position: absolute;
+                bottom: 5%;
+                width: 100%;
+                text-align: center;
+                color: rgba(255, 255, 255, 0.75);
+                font-size: 0.88rem;
+            }
 
-        @media (max-width: 640px) {
-            .card { padding: 1.6rem; border-radius: 22px; }
-            .hero-title { font-size: 3rem; }
-            .modal-content { min-height: 520px; }
-            .modal-heart { width: 180px; height: 180px; }
-        }
+            @keyframes heartSwing {
+
+                0%,
+                100% {
+                    transform: rotate(0deg) translateY(0);
+                }
+
+                25% {
+                    transform: rotate(10deg) translateY(-6px);
+                }
+
+                50% {
+                    transform: rotate(0deg) translateY(0);
+                }
+
+                75% {
+                    transform: rotate(-10deg) translateY(-6px);
+                }
+            }
+
+            @keyframes floatLeft {
+                from {
+                    transform: translateX(-8vw) translateY(18vh) scale(0.7);
+                    opacity: 0;
+                }
+
+                to {
+                    transform: translateX(8vw) translateY(-60vh) scale(1);
+                    opacity: 0;
+                }
+            }
+
+            @keyframes floatRight {
+                from {
+                    transform: translateX(8vw) translateY(18vh) scale(0.7);
+                    opacity: 0;
+                }
+
+                to {
+                    transform: translateX(-8vw) translateY(-58vh) scale(1);
+                    opacity: 0;
+                }
+            }
+
+            @media (max-width: 640px) {
+                .card {
+                    padding: 1.6rem;
+                    border-radius: 22px;
+                }
+
+                .hero-title {
+                    font-size: 3rem;
+                }
+
+                .modal-content {
+                    min-height: 520px;
+                }
+
+                .modal-heart {
+                    width: 180px;
+                    height: 180px;
+                }
+            }
     </style>
 </head>
 
@@ -384,10 +435,12 @@
                     <button class="button secondary" id="hugBtn">Enviar abrazo</button>
                 </div>
                 <div class="surprise-text" id="surpriseText">
-                    <p>Pequeño verso para ti:<br>Cuando el cielo esté gris, mira aquí dentro,<br>mi corazón late fuerte, sólo por tu aliento.</p>
+                    <p>Pequeño verso para ti:<br>Cuando el cielo esté gris, mira aquí dentro,<br>mi corazón late fuerte,
+                        sólo por tu aliento.</p>
                 </div>
             </div>
-            <div class="footer">No te rindas, no te desanimes y recuerda que si no lo hice por muchos años, ahora sí que menos te voy a dejar sola. Siempre estaré contigo. Besos.</div>
+            <div class="footer">No te rindas, no te desanimes y recuerda que si no lo hice por muchos años, ahora sí que
+                menos te voy a dejar sola. Siempre estaré contigo. Besos.</div>
         </section>
     </main>
 
@@ -403,7 +456,8 @@
                 </div>
                 <div class="modal-label">this is for you</div>
                 <div class="modal-instructions">Cada vez que escucho esa canción pienso en ti. Eres mi cielo.
-                    No te rindas, no te desanimes, y recuerda que si no lo hice por muchos años ahora sí que menos te voy a dejar sola. Siempre estaré contigo. Besos.</div>
+                    No te rindas, no te desanimes, y recuerda que si no lo hice por muchos años ahora sí que menos te
+                    voy a dejar sola. Siempre estaré contigo. Besos.</div>
             </div>
         </div>
     </div>
