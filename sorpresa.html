@@ -24,10 +24,10 @@
             margin: 0;
             min-height: 100vh;
             font-family: 'Poppins', system-ui, sans-serif;
-            background: radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.55), transparent 12%),
-                radial-gradient(circle at 80% 15%, rgba(255, 255, 255, 0.35), transparent 10%),
-                linear-gradient(135deg, var(--bg1), var(--bg2));
-            color: #2b1332;
+            background: radial-gradient(circle at top left, rgba(40, 10, 35, 0.95), transparent 15%),
+                radial-gradient(circle at 85% 10%, rgba(255, 85, 140, 0.15), transparent 20%),
+                linear-gradient(180deg, #100310, #22001a 45%, #3f0b36);
+            color: #f9eef8;
             overflow-x: hidden;
             position: relative;
         }
@@ -36,9 +36,9 @@
             content: '';
             position: fixed;
             inset: 0;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.9), transparent 1px) 0 0/14px 14px,
-                radial-gradient(circle, rgba(255, 255, 255, 0.7), transparent 1px) 6px 6px/30px 30px;
-            opacity: 0.16;
+            background: radial-gradient(circle, rgba(255, 182, 214, 0.25), transparent 1px) 0 0/18px 18px,
+                radial-gradient(circle, rgba(255, 150, 189, 0.22), transparent 1px) 9px 9px/36px 36px;
+            opacity: 0.75;
             pointer-events: none;
             z-index: 0;
         }
@@ -111,9 +111,9 @@
             height: 240px;
             display: grid;
             place-items: center;
-            pointer-events: auto;
-            animation: heartSwing 6s ease-in-out infinite;
-            cursor: pointer;
+            pointer-events: none;
+            animation: heartPulse 2.6s ease-in-out infinite;
+            cursor: default;
             background: transparent;
             border: none;
         }
@@ -168,10 +168,6 @@
             text-shadow: 0 12px 40px rgba(255, 96, 148, 0.46);
         }
 
-        .modal-heart:hover .heart-dot {
-            transform: translate(-50%, -50%) scale(1.15);
-        }
-
         .modal-heart.active .heart-dot {
             background: #ffdee8;
             box-shadow: 0 0 20px rgba(255, 222, 232, 0.8);
@@ -195,6 +191,20 @@
             100% {
                 opacity: 0.7;
                 transform: translate(-50%, -50%) scale(0.95);
+            }
+        }
+
+        @keyframes heartPulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                filter: drop-shadow(0 24px 60px rgba(255, 84, 131, 0.25));
+            }
+
+            50% {
+                transform: scale(1.03);
+                filter: drop-shadow(0 26px 70px rgba(255, 84, 131, 0.35));
             }
         }
 
@@ -230,25 +240,6 @@
             font-size: 0.88rem;
         }
 
-        @keyframes heartSwing {
-
-            0%,
-            100% {
-                transform: rotate(0deg) translateY(0);
-            }
-
-            25% {
-                transform: rotate(10deg) translateY(-6px);
-            }
-
-            50% {
-                transform: rotate(0deg) translateY(0);
-            }
-
-            75% {
-                transform: rotate(-10deg) translateY(-6px);
-            }
-        }
 
         @media (max-width: 640px) {
             .modal-content {
@@ -270,101 +261,21 @@
             <div class="modal-background"></div>
             <div class="modal-shine"></div>
             <div class="modal-center">
-                <canvas id="heartCanvas" class="heart-canvas" aria-hidden="true"></canvas>
-                <button type="button" class="modal-heart" id="heartButton" aria-label="Corazón de puntos">
+                <div class="modal-heart" aria-label="Corazón de puntos" role="img">
                     <div class="modal-heart-inner"></div>
                     <div class="heart-dots" id="heartDots"></div>
                     <div class="modal-heart-icon">❤</div>
-                </button>
+                </div>
                 <div class="modal-label">this is for you</div>
-                <div class="modal-instructions" id="modalInstructions">Cada vez que escucho esa canción pienso en ti.
-                    Eres mi cielo.
-                    No te rindas, no te desanimes, y recuerda que si no lo hice por muchos años ahora sí que menos te
-                    voy a dejar sola. Siempre estaré contigo. Besos.</div>
+                <div class="modal-instructions" id="modalInstructions">Cada vez que escucho esa canción pienso en ti.</div>
             </div>
-            <div class="audio-note">Toca el corazón para dibujar y escuchar la canción.</div>
+            <div class="audio-note">Este corazón brilla con cariño, sin necesidad de tocarlo.</div>
         </div>
     </main>
 
-    <audio id="song" src="tiroteo.mp3" preload="auto"></audio>
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const heartButton = document.getElementById('heartButton');
             const heartDots = document.getElementById('heartDots');
-            const modalInstructions = document.getElementById('modalInstructions');
-            const song = document.getElementById('song');
-            const heartCanvas = document.getElementById('heartCanvas');
-            const heartCtx = heartCanvas ? heartCanvas.getContext('2d') : null;
-            let heartAnimation = null;
-
-            function resizeHeartCanvas() {
-                if (!heartCanvas || !heartCtx) return;
-                const rect = heartCanvas.getBoundingClientRect();
-                const ratio = window.devicePixelRatio || 1;
-                heartCanvas.width = rect.width * ratio;
-                heartCanvas.height = rect.height * ratio;
-                heartCtx.setTransform(ratio, 0, 0, ratio, 0, 0);
-            }
-
-            function drawParametricHeart(progress = 1) {
-                if (!heartCtx || !heartCanvas) return;
-                const bounds = heartCanvas.getBoundingClientRect();
-                const width = bounds.width;
-                const height = bounds.height;
-                const scale = Math.min(width, height) * 0.022;
-                const centerX = width / 2;
-                const centerY = height / 2;
-
-                heartCtx.clearRect(0, 0, width, height);
-                heartCtx.lineWidth = 2.5;
-                heartCtx.strokeStyle = 'rgba(255, 255, 255, 0.65)';
-                heartCtx.fillStyle = 'rgba(255, 123, 164, 0.75)';
-                heartCtx.beginPath();
-
-                const steps = Math.max(120, Math.floor(360 * progress));
-                for (let i = 0; i <= steps; i++) {
-                    const k = (Math.PI * 2 * i) / 360;
-                    const x = 15 * Math.pow(Math.sin(k), 3);
-                    const y = 13 * Math.cos(k) - 5 * Math.cos(2 * k) - 2 * Math.cos(3 * k) - Math.cos(4 * k);
-                    const px = centerX + x * scale;
-                    const py = centerY - y * scale;
-                    if (i === 0) {
-                        heartCtx.moveTo(px, py);
-                    } else {
-                        heartCtx.lineTo(px, py);
-                    }
-                }
-
-                heartCtx.stroke();
-                heartCtx.globalAlpha = 0.2;
-                heartCtx.fill();
-                heartCtx.globalAlpha = 1;
-            }
-
-            function animateHeartDraw() {
-                if (!heartCanvas || !heartCtx) return;
-                const duration = 1200;
-                const start = performance.now();
-
-                if (heartAnimation) {
-                    cancelAnimationFrame(heartAnimation);
-                }
-
-                function step(now) {
-                    const elapsed = Math.min(now - start, duration);
-                    const progress = elapsed / duration;
-                    drawParametricHeart(progress);
-                    if (elapsed < duration) {
-                        heartAnimation = requestAnimationFrame(step);
-                    } else {
-                        heartAnimation = null;
-                    }
-                }
-
-                resizeHeartCanvas();
-                heartAnimation = requestAnimationFrame(step);
-            }
 
             function buildHeartDots() {
                 heartDots.innerHTML = '';
@@ -388,24 +299,7 @@
                 }
             }
 
-            window.addEventListener('resize', resizeHeartCanvas);
-            resizeHeartCanvas();
             buildHeartDots();
-            animateHeartDraw();
-
-            heartButton.addEventListener('click', () => {
-                heartButton.classList.toggle('active');
-                animateHeartDraw();
-                if (song.paused) {
-                    song.play().catch(() => {
-                        modalInstructions.textContent = 'El audio no pudo empezar automáticamente, inténtalo otra vez.';
-                    });
-                    modalInstructions.textContent = 'Te quiero, este corazón de puntos es para ti. Cada vez que escucho esa canción, pienso en ti.';
-                } else {
-                    song.pause();
-                    modalInstructions.textContent = 'Se pausó la canción. Toca otra vez si quieres seguir escuchando.';
-                }
-            });
         });
     </script>
 </body>

@@ -24,10 +24,10 @@
             margin: 0;
             min-height: 100vh;
             font-family: 'Poppins', system-ui, sans-serif;
-            background: radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.55), transparent 12%),
-                radial-gradient(circle at 80% 15%, rgba(255, 255, 255, 0.35), transparent 10%),
-                linear-gradient(135deg, var(--bg1), var(--bg2));
-            color: #2b1332;
+            background: radial-gradient(circle at top left, rgba(40, 10, 35, 0.95), transparent 15%),
+                radial-gradient(circle at 85% 10%, rgba(255, 85, 140, 0.15), transparent 20%),
+                linear-gradient(180deg, #100310, #22001a 45%, #3f0b36);
+            color: #f9eef8;
             overflow-x: hidden;
             position: relative;
         }
@@ -36,9 +36,9 @@
             content: '';
             position: fixed;
             inset: 0;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.9), transparent 1px) 0 0/14px 14px,
-                radial-gradient(circle, rgba(255, 255, 255, 0.7), transparent 1px) 6px 6px/30px 30px;
-            opacity: 0.16;
+            background: radial-gradient(circle, rgba(255, 182, 214, 0.25), transparent 1px) 0 0/18px 18px,
+                radial-gradient(circle, rgba(255, 150, 189, 0.22), transparent 1px) 9px 9px/36px 36px;
+            opacity: 0.75;
             pointer-events: none;
             z-index: 0;
         }
@@ -59,12 +59,12 @@
             max-width: 860px;
             padding: 2.2rem;
             border-radius: 28px;
-            background: var(--card);
-            border: 1px solid rgba(255, 255, 255, 0.32);
-            backdrop-filter: blur(20px);
-            box-shadow: 0 32px 80px rgba(0, 0, 0, 0.12);
+            background: rgba(24, 5, 28, 0.72);
+            border: 1px solid rgba(255, 125, 190, 0.18);
+            backdrop-filter: blur(24px);
+            box-shadow: 0 32px 80px rgba(0, 0, 0, 0.35);
             overflow: hidden;
-            color: #080808;
+            color: #f8eff9;
         }
 
         .card::before {
@@ -80,15 +80,15 @@
             margin: 0;
             font-size: clamp(3rem, 5vw, 4.8rem);
             font-family: 'Great Vibes', cursive;
-            color: #080808;
-            text-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+            color: #ffd8f2;
+            text-shadow: 0 14px 30px rgba(0, 0, 0, 0.45);
             position: relative;
             z-index: 1;
         }
 
         .subtitle {
             margin: 0.4rem 0 0;
-            color: rgba(0, 0, 0, 0.78);
+            color: rgba(255, 200, 235, 0.88);
             font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 0.35em;
@@ -101,13 +101,13 @@
         }
 
         .message {
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.28);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 125, 195, 0.2);
             border-radius: 18px;
             padding: 1.4rem;
-            color: #080808;
+            color: #ffffff;
             line-height: 1.7;
-            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
         }
 
         .buttons {
@@ -178,7 +178,7 @@
 
         .footer {
             margin-top: 1.6rem;
-            color: rgba(0, 0, 0, 0.75);
+            color: rgba(255, 228, 245, 0.84);
             font-size: 0.95rem;
         }
 
@@ -464,19 +464,17 @@
             <p class="subtitle">Esta página es solo para ti</p>
             <div class="content">
                 <div class="message">
-                    Eres la razón de mis sonrisas, la luz suave en mis días. Aquí tienes un abrazo virtual, una sorpresa
-                    lista para ti y todo mi cariño.
+                    Tu mensaje calido en la mañana es la fuente de animo que me despierta con mis lagañas jaja. Espero que este pequeño detalle te saque una sonrisa y te recuerde lo mucho que te quiero y admiro. Eres increíble en lo que haces y me siento muy orgulloso de ti. ¡Sigue brillando, como lo sabes hacer!
                 </div>
                 <div class="buttons">
                     <a class="button primary" href="sorpresa.html">Abrir sorpresa</a>
                     <button type="button" class="button secondary" id="hugBtn">Enviar abrazo</button>
                 </div>
                 <div class="surprise-text" id="surpriseText">
-                    <p>Pequeño verso para ti:<br>Cuando el cielo esté gris, mira aquí dentro,<br>mi corazón late fuerte,
-                        sólo por tu aliento.</p>
+
                 </div>
             </div>
-            <div class="footer">No te rindas, no te desanimes y recuerda que si no lo hice por muchos años, ahora sí que
+            <div  class="footer">No te rindas, no te desanimes y recuerda que si no lo hice por muchos años, ahora sí que
                 menos te voy a dejar sola. Siempre estaré contigo. Besos.</div>
         </section>
     </main>
