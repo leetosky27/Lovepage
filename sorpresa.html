@@ -169,12 +169,14 @@
         }
 
         .modal-heart.active .heart-dot {
-            background: #ffdee8;
-            box-shadow: 0 0 20px rgba(255, 222, 232, 0.8);
+            background: rgba(255, 133, 188, 0.95);
+            box-shadow: 0 0 24px rgba(255, 133, 188, 0.9);
         }
 
         .heart-dot {
             animation: dotTwinkle 1.8s ease-in-out infinite;
+            background: rgba(255, 140, 198, 0.92);
+            box-shadow: 0 0 16px rgba(255, 140, 198, 0.45);
         }
 
         @keyframes dotTwinkle {
@@ -267,15 +269,19 @@
                     <div class="modal-heart-icon">❤</div>
                 </div>
                 <div class="modal-label">this is for you</div>
-                <div class="modal-instructions" id="modalInstructions">Cada vez que escucho esa canción pienso en ti.</div>
+                <div class="modal-instructions" id="modalInstructions">Cada vez que escucho esa canción pienso en ti.
+                </div>
             </div>
-            <div class="audio-note">Este corazón brilla con cariño, sin necesidad de tocarlo.</div>
+            <div class="audio-note">La canción comienza sola al abrir esta página.</div>
         </div>
     </main>
 
+    <audio id="song" src="Marc Seguí, Pol Granch - Tiroteo (Videoclip Oficial).mp3" preload="auto" autoplay playsinline
+        controls></audio>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const heartDots = document.getElementById('heartDots');
+            const song = document.getElementById('song');
 
             function buildHeartDots() {
                 heartDots.innerHTML = '';
@@ -300,6 +306,13 @@
             }
 
             buildHeartDots();
+
+            if (song) {
+                song.volume = 0.92;
+                song.play().catch(() => {
+                    // El navegador puede bloquear autoplay; el audio intentará iniciarse cuando sea posible.
+                });
+            }
         });
     </script>
 </body>
