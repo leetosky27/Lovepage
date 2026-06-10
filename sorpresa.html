@@ -243,14 +243,143 @@
         }
 
 
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
+            .stage {
+                padding: 1rem;
+                min-height: 100vh;
+            }
+
             .modal-content {
-                min-height: 520px;
+                min-height: auto;
+                padding: 1.5rem;
+                border-radius: 24px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .back-button {
+                position: fixed;
+                left: 12px;
+                top: 12px;
+                padding: 0.7rem 0.9rem;
+                font-size: 0.9rem;
+            }
+
+            .modal-center {
+                position: relative;
+                inset: auto;
+                padding: 1rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
             }
 
             .modal-heart {
-                width: 180px;
-                height: 180px;
+                width: 150px;
+                height: 150px;
+                margin-bottom: 1.5rem;
+                animation: heartPulse 2.6s ease-in-out infinite;
+            }
+
+            .modal-label {
+                position: relative;
+                top: 0;
+                width: 100%;
+                margin-bottom: 1rem;
+                font-size: 0.9rem;
+                text-align: center;
+            }
+
+            .modal-instructions {
+                position: relative;
+                bottom: 0;
+                width: 100%;
+                max-width: 100%;
+                margin: 0 0 1.5rem 0;
+                padding: 0 0.5rem;
+                font-size: 1rem;
+                line-height: 1.6;
+                text-align: center;
+            }
+
+            .audio-note {
+                position: relative;
+                bottom: 0;
+                width: 100%;
+                margin-top: 1rem;
+                font-size: 0.85rem;
+                text-align: center;
+            }
+
+            .heart-dot {
+                width: 8px;
+                height: 8px;
+            }
+
+            .modal-heart-icon {
+                font-size: 2.4rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stage {
+                padding: 0.8rem;
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+            }
+
+            .modal-content {
+                min-height: auto;
+                padding: 1.2rem;
+                border-radius: 20px;
+            }
+
+            .back-button {
+                left: 10px;
+                top: 10px;
+                padding: 0.6rem 0.8rem;
+                font-size: 0.85rem;
+            }
+
+            .modal-center {
+                padding: 0.5rem;
+            }
+
+            .modal-heart {
+                width: 130px;
+                height: 130px;
+                margin-bottom: 1rem;
+            }
+
+            .modal-label {
+                font-size: 0.85rem;
+                margin-bottom: 0.8rem;
+                letter-spacing: 0.1em;
+            }
+
+            .modal-instructions {
+                font-size: 0.95rem;
+                line-height: 1.5;
+                margin-bottom: 1rem;
+            }
+
+            .audio-note {
+                font-size: 0.8rem;
+                margin-top: 0.8rem;
+            }
+
+            .heart-dot {
+                width: 7px;
+                height: 7px;
+            }
+
+            .modal-heart-icon {
+                font-size: 2rem;
             }
         }
     </style>
