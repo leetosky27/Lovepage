@@ -277,7 +277,7 @@
     </main>
 
     <audio id="song" src="Marc Seguí, Pol Granch - Tiroteo (Videoclip Oficial).mp3" preload="auto" autoplay playsinline
-        controls></audio>
+        controls muted></audio>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const heartDots = document.getElementById('heartDots');
@@ -307,12 +307,22 @@
 
             buildHeartDots();
 
-            if (song) {
-                song.volume = 0.92;
-                song.play().catch(() => {
-                    // El navegador puede bloquear autoplay; el audio intentará iniciarse cuando sea posible.
-                });
+            function playAudio() {
+                if (song) {
+                    song.volume = 0.92;
+                    song.muted = false;
+                    song.play().catch(() => {
+                        console.log('Autoplay bloqueado. El usuario puede usar los controles del reproductor.');
+                    });
+                }
             }
+
+            // Intenta reproducir al cargar
+            playAudio();
+
+            // Si el usuario interactúa con la página, intenta reproducir nuevamente
+            document.addEventListener('click', playAudio, { once: true });
+            document.addEventListener('touchstart', playAudio, { once: true });
         });
     </script>
 </body>
