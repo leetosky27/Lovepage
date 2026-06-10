@@ -64,6 +64,7 @@
             backdrop-filter: blur(20px);
             box-shadow: 0 32px 80px rgba(0, 0, 0, 0.12);
             overflow: hidden;
+            color: #080808;
         }
 
         .card::before {
@@ -79,15 +80,15 @@
             margin: 0;
             font-size: clamp(3rem, 5vw, 4.8rem);
             font-family: 'Great Vibes', cursive;
-            color: #fff;
-            text-shadow: 0 14px 30px rgba(129, 43, 95, 0.28);
+            color: #080808;
+            text-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
             position: relative;
             z-index: 1;
         }
 
         .subtitle {
             margin: 0.4rem 0 0;
-            color: rgba(255, 255, 255, 0.92);
+            color: rgba(0, 0, 0, 0.78);
             font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 0.35em;
@@ -104,7 +105,7 @@
             border: 1px solid rgba(255, 255, 255, 0.28);
             border-radius: 18px;
             padding: 1.4rem;
-            color: #fff;
+            color: #080808;
             line-height: 1.7;
             box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
         }
@@ -159,11 +160,12 @@
 
         .surprise-text p {
             margin: 0;
+            color: #080808;
         }
 
         .footer {
             margin-top: 1.6rem;
-            color: rgba(255, 255, 255, 0.88);
+            color: rgba(0, 0, 0, 0.75);
             font-size: 0.95rem;
         }
 
@@ -271,43 +273,46 @@
             inset: 0;
             display: grid;
             place-items: center;
-            pointer-events: none;
+            pointer-events: auto;
         }
 
         .modal-heart {
             position: relative;
-            width: 220px;
-            height: 220px;
+            width: 240px;
+            height: 240px;
             display: grid;
             place-items: center;
             pointer-events: auto;
             animation: heartSwing 6s ease-in-out infinite;
+            cursor: pointer;
+            background: transparent;
+            border: none;
         }
 
         .modal-heart-inner {
-            position: relative;
+            position: absolute;
             width: 90%;
             height: 90%;
-            background: radial-gradient(circle at 40% 30%, rgba(255, 130, 175, 1), rgba(255, 65, 105, 1));
+            background: rgba(255, 255, 255, 0.04);
             border-radius: 50%;
-            filter: drop-shadow(0 24px 60px rgba(255, 84, 131, 0.35));
+            filter: drop-shadow(0 24px 60px rgba(255, 84, 131, 0.25));
         }
 
-        .modal-heart-inner::before,
-        .modal-heart-inner::after {
-            content: '';
+        .heart-dots {
             position: absolute;
-            width: 56%;
-            height: 56%;
-            background: inherit;
-            border-radius: 50%;
-            top: -18%;
-            left: 12%;
+            inset: 0;
+            pointer-events: none;
         }
 
-        .modal-heart-inner::after {
-            left: auto;
-            right: 12%;
+        .heart-dot {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.92);
+            box-shadow: 0 0 16px rgba(255, 255, 255, 0.35);
+            transform: translate(-50%, -50%);
+            opacity: 0.9;
         }
 
         .modal-heart-icon {
@@ -315,21 +320,40 @@
             inset: 0;
             display: grid;
             place-items: center;
-            font-size: 4rem;
+            font-size: 3rem;
             color: rgba(255, 255, 255, 0.88);
             pointer-events: none;
             text-shadow: 0 12px 40px rgba(255, 96, 148, 0.46);
         }
 
-        .modal-label {
-            position: absolute;
-            top: 14%;
-            width: 100%;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1rem;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
+        .modal-heart:hover .heart-dot {
+            transform: translate(-50%, -50%) scale(1.15);
+        }
+
+        .modal-heart.active .heart-dot {
+            background: #ffdee8;
+            box-shadow: 0 0 20px rgba(255, 222, 232, 0.8);
+        }
+
+        .heart-dot {
+            animation: dotTwinkle 1.8s ease-in-out infinite;
+        }
+
+        @keyframes dotTwinkle {
+            0% {
+                opacity: 0.6;
+                transform: translate(-50%, -50%) scale(0.95);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.05);
+            }
+
+            100% {
+                opacity: 0.7;
+                transform: translate(-50%, -50%) scale(0.95);
+            }
         }
 
         .modal-instructions {
@@ -423,7 +447,7 @@
     <main class="stage">
         <section class="card" aria-labelledby="title">
             <div class="hearts" id="hearts"></div>
-            <h1 class="hero-title" id="title">Para mi amor</h1>
+            <h1 class="hero-title" id="title">Para la mejor ingeniera</h1>
             <p class="subtitle">Esta página es solo para ti</p>
             <div class="content">
                 <div class="message">
@@ -431,8 +455,8 @@
                     lista para ti y todo mi cariño.
                 </div>
                 <div class="buttons">
-                    <button class="button primary" id="surpriseBtn">Abrir sorpresa</button>
-                    <button class="button secondary" id="hugBtn">Enviar abrazo</button>
+                    <button type="button" class="button primary" id="surpriseBtn">Abrir sorpresa</button>
+                    <button type="button" class="button secondary" id="hugBtn">Enviar abrazo</button>
                 </div>
                 <div class="surprise-text" id="surpriseText">
                     <p>Pequeño verso para ti:<br>Cuando el cielo esté gris, mira aquí dentro,<br>mi corazón late fuerte,
@@ -446,59 +470,106 @@
 
     <div class="modal" id="modal">
         <div class="modal-content">
-            <button class="modal-close" id="closeModal">✕</button>
+            <button type="button" class="modal-close" id="closeModal">✕</button>
             <div class="modal-background"></div>
             <div class="modal-shine"></div>
             <div class="modal-center">
-                <div class="modal-heart">
+                <button type="button" class="modal-heart" id="heartButton" aria-label="Corazón de puntos">
                     <div class="modal-heart-inner"></div>
+                    <div class="heart-dots" id="heartDots"></div>
                     <div class="modal-heart-icon">❤</div>
-                </div>
+                </button>
                 <div class="modal-label">this is for you</div>
-                <div class="modal-instructions">Cada vez que escucho esa canción pienso en ti. Eres mi cielo.
+                <div class="modal-instructions" id="modalInstructions">Cada vez que escucho esa canción pienso en ti.
+                    Eres mi cielo.
                     No te rindas, no te desanimes, y recuerda que si no lo hice por muchos años ahora sí que menos te
                     voy a dejar sola. Siempre estaré contigo. Besos.</div>
             </div>
         </div>
     </div>
 
+    <audio id="song" src="tiroteo.mp3" preload="auto"></audio>
+
     <script>
-        const heartsContainer = document.getElementById('hearts');
-        const surpriseBtn = document.getElementById('surpriseBtn');
-        const hugBtn = document.getElementById('hugBtn');
-        const surpriseText = document.getElementById('surpriseText');
-        const modal = document.getElementById('modal');
-        const closeModal = document.getElementById('closeModal');
+        document.addEventListener('DOMContentLoaded', () => {
+            const heartsContainer = document.getElementById('hearts');
+            const surpriseBtn = document.getElementById('surpriseBtn');
+            const hugBtn = document.getElementById('hugBtn');
+            const surpriseText = document.getElementById('surpriseText');
+            const modal = document.getElementById('modal');
+            const closeModal = document.getElementById('closeModal');
+            const heartButton = document.getElementById('heartButton');
+            const heartDots = document.getElementById('heartDots');
+            const modalInstructions = document.getElementById('modalInstructions');
+            const song = document.getElementById('song');
 
-        function makeHeart() {
-            const elem = document.createElement('div');
-            elem.className = 'heart';
-            const size = 18 + Math.random() * 25;
-            elem.style.width = `${size}px`;
-            elem.style.height = `${size}px`;
-            elem.style.left = `${10 + Math.random() * 80}%`;
-            elem.style.top = `${90 + Math.random() * 20}%`;
-            elem.style.animationDuration = `${7 + Math.random() * 5}s`;
-            elem.style.opacity = 0.6 + Math.random() * 0.4;
-            elem.innerHTML = `<svg viewBox="0 0 32 29" xmlns="http://www.w3.org/2000/svg"><path fill="rgba(255, 255, 255, 0.92)" d="M23.6 0c-2.8 0-5.1 1.8-6 3.9C16.5 1.8 14.2 0 11.4 0 5.1 0 .6 4.8.6 10.7c0 6.1 6.2 10.4 15.4 18.3l1.6 1.3 1.6-1.3C25.2 21.1 31.4 16.8 31.4 10.7 31.4 4.8 26.9 0 20.6 0z"/></svg>`;
-            heartsContainer.appendChild(elem);
-            setTimeout(() => elem.remove(), 12000 + Math.random() * 2000);
-        }
+            function makeHeart() {
+                const elem = document.createElement('div');
+                elem.className = 'heart';
+                const size = 18 + Math.random() * 25;
+                elem.style.width = `${size}px`;
+                elem.style.height = `${size}px`;
+                elem.style.left = `${10 + Math.random() * 80}%`;
+                elem.style.top = `${90 + Math.random() * 20}%`;
+                elem.style.animationDuration = `${7 + Math.random() * 5}s`;
+                elem.style.opacity = 0.6 + Math.random() * 0.4;
+                elem.innerHTML = `<svg viewBox="0 0 32 29" xmlns="http://www.w3.org/2000/svg"><path fill="rgba(255, 255, 255, 0.92)" d="M23.6 0c-2.8 0-5.1 1.8-6 3.9C16.5 1.8 14.2 0 11.4 0 5.1 0 .6 4.8.6 10.7c0 6.1 6.2 10.4 15.4 18.3l1.6 1.3 1.6-1.3C25.2 21.1 31.4 16.8 31.4 10.7 31.4 4.8 26.9 0 20.6 0z"/></svg>`;
+                heartsContainer.appendChild(elem);
+                setTimeout(() => elem.remove(), 12000 + Math.random() * 2000);
+            }
 
-        for (let i = 0; i < 9; i++) setTimeout(makeHeart, i * 350);
-        setInterval(makeHeart, 950);
+            function buildHeartDots() {
+                heartDots.innerHTML = '';
+                const count = 42;
+                const radius = 94;
+                for (let i = 0; i < count; i++) {
+                    const t = Math.PI * 2 * (i / count);
+                    const x = 16 * Math.pow(Math.sin(t), 3);
+                    const y = 13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t);
+                    const dot = document.createElement('div');
+                    dot.className = 'heart-dot';
+                    const left = 50 + x * (radius / 16);
+                    const top = 50 - y * (radius / 16);
+                    dot.style.left = `${left}%`;
+                    dot.style.top = `${top}%`;
+                    dot.style.width = `${6 + Math.random() * 5}px`;
+                    dot.style.height = dot.style.width;
+                    dot.style.opacity = 0.8 + Math.random() * 0.2;
+                    dot.style.animationDelay = `${Math.random() * 1.5}s`;
+                    heartDots.appendChild(dot);
+                }
+            }
 
-        surpriseBtn.addEventListener('click', () => {
-            modal.classList.add('open');
-            surpriseText.classList.toggle('open');
-        });
+            buildHeartDots();
 
-        closeModal.addEventListener('click', () => {
-            modal.classList.remove('open');
-        });
+            for (let i = 0; i < 9; i++) setTimeout(makeHeart, i * 350);
+            setInterval(makeHeart, 950);
 
-        hugBtn.addEventListener('click', () => {
-            for (let i = 0; i < 28; i++) setTimeout(makeHeart, i * 30);
+            surpriseBtn.addEventListener('click', () => {
+                modal.classList.add('open');
+                surpriseText.classList.toggle('open');
+            });
+
+            closeModal.addEventListener('click', () => {
+                modal.classList.remove('open');
+            });
+
+            hugBtn.addEventListener('click', () => {
+                for (let i = 0; i < 28; i++) setTimeout(makeHeart, i * 30);
+            });
+
+            heartButton.addEventListener('click', () => {
+                heartButton.classList.toggle('active');
+                if (song.paused) {
+                    song.play().catch(() => {
+                        modalInstructions.textContent = 'El audio no pudo empezar automáticamente, inténtalo otra vez.';
+                    });
+                    modalInstructions.textContent = 'Te quiero, este corazón de puntos es para ti. Cada vez que escucho esa canción, pienso en ti.';
+                } else {
+                    song.pause();
+                    modalInstructions.textContent = 'Se pausó la canción. Toca otra vez si quieres seguir escuchando.';
+                }
+            });
         });
     </script>
 </body>
