@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para ti 💖</title>
+    <title>Sorpresa 💖</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap"
         rel="stylesheet">
     <style>
@@ -53,189 +53,6 @@
             z-index: 1;
         }
 
-        .card {
-            position: relative;
-            width: 100%;
-            max-width: 860px;
-            padding: 2.2rem;
-            border-radius: 28px;
-            background: var(--card);
-            border: 1px solid rgba(255, 255, 255, 0.32);
-            backdrop-filter: blur(20px);
-            box-shadow: 0 32px 80px rgba(0, 0, 0, 0.12);
-            overflow: hidden;
-            color: #080808;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.26), transparent 24%),
-                radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.12), transparent 20%);
-            pointer-events: none;
-        }
-
-        .hero-title {
-            margin: 0;
-            font-size: clamp(3rem, 5vw, 4.8rem);
-            font-family: 'Great Vibes', cursive;
-            color: #080808;
-            text-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
-            position: relative;
-            z-index: 1;
-        }
-
-        .subtitle {
-            margin: 0.4rem 0 0;
-            color: rgba(0, 0, 0, 0.78);
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.35em;
-        }
-
-        .content {
-            position: relative;
-            z-index: 1;
-            margin-top: 1.8rem;
-        }
-
-        .message {
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.28);
-            border-radius: 18px;
-            padding: 1.4rem;
-            color: #080808;
-            line-height: 1.7;
-            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
-        }
-
-        .buttons {
-            margin-top: 1.6rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.9rem;
-        }
-
-        .button {
-            padding: 0.95rem 1.5rem;
-            border-radius: 14px;
-            border: none;
-            cursor: pointer;
-            font-weight: 700;
-            letter-spacing: 0.03em;
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
-        }
-
-        .button.primary {
-            background: linear-gradient(135deg, #ff7b9c, #ff5474);
-            color: #fff;
-            box-shadow: 0 14px 28px rgba(255, 78, 139, 0.28);
-        }
-
-        .button.secondary {
-            background: rgba(255, 255, 255, 0.18);
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.28);
-        }
-
-        .button:hover {
-            transform: translateY(-2px);
-        }
-
-        .surprise-text {
-            margin-top: 1.2rem;
-            visibility: visible;
-            opacity: 1;
-            max-height: none;
-            overflow: visible;
-            transition: none;
-        }
-
-        .surprise-text.open {
-            visibility: visible;
-            opacity: 1;
-            max-height: none;
-        }
-
-        .surprise-text p {
-            margin: 0;
-            color: #080808;
-        }
-
-        .heart-canvas {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            max-width: 520px;
-            max-height: 520px;
-            border-radius: 50%;
-            pointer-events: none;
-            opacity: 0.9;
-            z-index: 0;
-        }
-
-        .footer {
-            margin-top: 1.6rem;
-            color: rgba(0, 0, 0, 0.75);
-            font-size: 0.95rem;
-        }
-
-        .hearts {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .heart {
-            position: absolute;
-            width: 28px;
-            height: 28px;
-            transform: translate(-50%, -50%) rotate(0deg);
-            animation: floatUp 9s linear infinite;
-            opacity: 0.92;
-        }
-
-        .heart svg {
-            width: 100%;
-            height: 100%;
-        }
-
-        @keyframes floatUp {
-            0% {
-                transform: translate(-50%, 110%) scale(0.75) rotate(0deg);
-                opacity: 0.6;
-            }
-
-            50% {
-                opacity: 1;
-            }
-
-            100% {
-                transform: translate(-50%, -120vh) scale(0.85) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        .modal {
-            position: fixed;
-            inset: 0;
-            z-index: 60;
-            display: grid;
-            place-items: center;
-            background: rgba(8, 3, 10, 0.95);
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.35s ease;
-        }
-
-        .modal.open {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
         .modal-content {
             position: relative;
             width: min(980px, 93%);
@@ -249,20 +66,18 @@
             box-shadow: 0 40px 120px rgba(0, 0, 0, 0.45);
         }
 
-        .modal-close {
+        .back-button {
             position: absolute;
-            right: 18px;
+            left: 18px;
             top: 18px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 0.85rem 1rem;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            background: rgba(255, 255, 255, 0.08);
             color: #fff;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.2rem;
-            display: grid;
-            place-items: center;
+            text-decoration: none;
+            font-weight: 700;
+            z-index: 12;
         }
 
         .modal-background {
@@ -287,6 +102,7 @@
             display: grid;
             place-items: center;
             pointer-events: auto;
+            padding: 2rem;
         }
 
         .modal-heart {
@@ -309,6 +125,19 @@
             background: rgba(255, 255, 255, 0.04);
             border-radius: 50%;
             filter: drop-shadow(0 24px 60px rgba(255, 84, 131, 0.25));
+        }
+
+        .heart-canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            max-width: 520px;
+            max-height: 520px;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.9;
+            z-index: 0;
         }
 
         .heart-dots {
@@ -369,6 +198,17 @@
             }
         }
 
+        .modal-label {
+            position: absolute;
+            top: 14%;
+            width: 100%;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
         .modal-instructions {
             position: absolute;
             bottom: 17%;
@@ -410,40 +250,7 @@
             }
         }
 
-        @keyframes floatLeft {
-            from {
-                transform: translateX(-8vw) translateY(18vh) scale(0.7);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateX(8vw) translateY(-60vh) scale(1);
-                opacity: 0;
-            }
-        }
-
-        @keyframes floatRight {
-            from {
-                transform: translateX(8vw) translateY(18vh) scale(0.7);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateX(-8vw) translateY(-58vh) scale(1);
-                opacity: 0;
-            }
-        }
-
         @media (max-width: 640px) {
-            .card {
-                padding: 1.6rem;
-                border-radius: 22px;
-            }
-
-            .hero-title {
-                font-size: 3rem;
-            }
-
             .modal-content {
                 min-height: 520px;
             }
@@ -458,33 +265,38 @@
 
 <body>
     <main class="stage">
-        <section class="card" aria-labelledby="title">
-            <div class="hearts" id="hearts"></div>
-            <h1 class="hero-title" id="title">Para la mejor ingeniera</h1>
-            <p class="subtitle">Esta página es solo para ti</p>
-            <div class="content">
-                <div class="message">
-                    Eres la razón de mis sonrisas, la luz suave en mis días. Aquí tienes un abrazo virtual, una sorpresa
-                    lista para ti y todo mi cariño.
-                </div>
-                <div class="buttons">
-                    <a class="button primary" href="sorpresa.html">Abrir sorpresa</a>
-                    <button type="button" class="button secondary" id="hugBtn">Enviar abrazo</button>
-                </div>
-                <div class="surprise-text" id="surpriseText">
-                    <p>Pequeño verso para ti:<br>Cuando el cielo esté gris, mira aquí dentro,<br>mi corazón late fuerte,
-                        sólo por tu aliento.</p>
-                </div>
+        <div class="modal-content">
+            <a class="back-button" href="index.html">← Volver</a>
+            <div class="modal-background"></div>
+            <div class="modal-shine"></div>
+            <div class="modal-center">
+                <canvas id="heartCanvas" class="heart-canvas" aria-hidden="true"></canvas>
+                <button type="button" class="modal-heart" id="heartButton" aria-label="Corazón de puntos">
+                    <div class="modal-heart-inner"></div>
+                    <div class="heart-dots" id="heartDots"></div>
+                    <div class="modal-heart-icon">❤</div>
+                </button>
+                <div class="modal-label">this is for you</div>
+                <div class="modal-instructions" id="modalInstructions">Cada vez que escucho esa canción pienso en ti.
+                    Eres mi cielo.
+                    No te rindas, no te desanimes, y recuerda que si no lo hice por muchos años ahora sí que menos te
+                    voy a dejar sola. Siempre estaré contigo. Besos.</div>
             </div>
-            <div class="footer">No te rindas, no te desanimes y recuerda que si no lo hice por muchos años, ahora sí que
-                menos te voy a dejar sola. Siempre estaré contigo. Besos.</div>
-        </section>
+            <div class="audio-note">Toca el corazón para dibujar y escuchar la canción.</div>
+        </div>
     </main>
+
+    <audio id="song" src="tiroteo.mp3" preload="auto"></audio>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const heartsContainer = document.getElementById('hearts');
-            const hugBtn = document.getElementById('hugBtn');
+            const heartButton = document.getElementById('heartButton');
+            const heartDots = document.getElementById('heartDots');
+            const modalInstructions = document.getElementById('modalInstructions');
+            const song = document.getElementById('song');
+            const heartCanvas = document.getElementById('heartCanvas');
+            const heartCtx = heartCanvas ? heartCanvas.getContext('2d') : null;
+            let heartAnimation = null;
 
             function resizeHeartCanvas() {
                 if (!heartCanvas || !heartCtx) return;
@@ -517,7 +329,6 @@
                     const y = 13 * Math.cos(k) - 5 * Math.cos(2 * k) - 2 * Math.cos(3 * k) - Math.cos(4 * k);
                     const px = centerX + x * scale;
                     const py = centerY - y * scale;
-
                     if (i === 0) {
                         heartCtx.moveTo(px, py);
                     } else {
@@ -555,21 +366,6 @@
                 heartAnimation = requestAnimationFrame(step);
             }
 
-            function makeHeart() {
-                const elem = document.createElement('div');
-                elem.className = 'heart';
-                const size = 18 + Math.random() * 25;
-                elem.style.width = `${size}px`;
-                elem.style.height = `${size}px`;
-                elem.style.left = `${10 + Math.random() * 80}%`;
-                elem.style.top = `${90 + Math.random() * 20}%`;
-                elem.style.animationDuration = `${7 + Math.random() * 5}s`;
-                elem.style.opacity = 0.6 + Math.random() * 0.4;
-                elem.innerHTML = `<svg viewBox="0 0 32 29" xmlns="http://www.w3.org/2000/svg"><path fill="rgba(255, 255, 255, 0.92)" d="M23.6 0c-2.8 0-5.1 1.8-6 3.9C16.5 1.8 14.2 0 11.4 0 5.1 0 .6 4.8.6 10.7c0 6.1 6.2 10.4 15.4 18.3l1.6 1.3 1.6-1.3C25.2 21.1 31.4 16.8 31.4 10.7 31.4 4.8 26.9 0 20.6 0z"/></svg>`;
-                heartsContainer.appendChild(elem);
-                setTimeout(() => elem.remove(), 12000 + Math.random() * 2000);
-            }
-
             function buildHeartDots() {
                 heartDots.innerHTML = '';
                 const count = 42;
@@ -592,11 +388,23 @@
                 }
             }
 
-            for (let i = 0; i < 9; i++) setTimeout(makeHeart, i * 350);
-            setInterval(makeHeart, 950);
+            window.addEventListener('resize', resizeHeartCanvas);
+            resizeHeartCanvas();
+            buildHeartDots();
+            animateHeartDraw();
 
-            hugBtn.addEventListener('click', () => {
-                for (let i = 0; i < 28; i++) setTimeout(makeHeart, i * 30);
+            heartButton.addEventListener('click', () => {
+                heartButton.classList.toggle('active');
+                animateHeartDraw();
+                if (song.paused) {
+                    song.play().catch(() => {
+                        modalInstructions.textContent = 'El audio no pudo empezar automáticamente, inténtalo otra vez.';
+                    });
+                    modalInstructions.textContent = 'Te quiero, este corazón de puntos es para ti. Cada vez que escucho esa canción, pienso en ti.';
+                } else {
+                    song.pause();
+                    modalInstructions.textContent = 'Se pausó la canción. Toca otra vez si quieres seguir escuchando.';
+                }
             });
         });
     </script>
